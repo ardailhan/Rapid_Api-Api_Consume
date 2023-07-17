@@ -12,6 +12,7 @@ namespace HotelProject.WebUI.DTOs.RegisterDto
         public string Username { get; set; }
         [Required(ErrorMessage = "Mail field should not be empty")]
         public string Mail { get; set; }
+        public string City { get; set; }
         [Required(ErrorMessage = "Password field should not be empty")]
         public string Password { get; set; }
         [Required(ErrorMessage = "Confirm Password field should not be empty")]
