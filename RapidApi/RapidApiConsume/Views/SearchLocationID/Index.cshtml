@@ -8,11 +8,16 @@
 <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <div class="container">
-    <br /><br />
+    <br />
+    @using (Html.BeginForm("Index", "SearchLocationID", FormMethod.Post))
+    {
+        <label>Enter City Name</label>
+        <input type="text" class="form-control" name="cityName" />
+        <br />
+        <button class="btn btn-primary">Find Id For City</button>
+    }
+
     <table class="table table-bordered">
-        <tr>
-            <th>Location</th>
-        </tr>
         @foreach (var item in Model)
         {
             <tr>
@@ -20,4 +25,6 @@
             </tr>
         }
     </table>
+    <br />
+    <a href="/BookingByCity/Index/" class="btn btn-dark">New booking information</a>
 </div>
