@@ -12,7 +12,12 @@ namespace WebAPi.Jwt.Models
             var bytes = Encoding.UTF8.GetBytes("aspnetcoreapiapi");
             SymmetricSecurityKey key = new SymmetricSecurityKey(bytes);
             SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            JwtSecurityToken token = new JwtSecurityToken(issuer: "http://localhost", audience: "http://localhost", notBefore:DateTime.Now, expires:DateTime.Now.AddMinutes(10), signingCredentials: credentials);
+            JwtSecurityToken token = new JwtSecurityToken(
+                issuer: "http://localhost", 
+                audience: "http://localhost", 
+                notBefore:DateTime.Now, 
+                expires:DateTime.Now.AddMinutes(10), 
+                signingCredentials: credentials);
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
             return handler.WriteToken(token);
         }
@@ -29,7 +34,13 @@ namespace WebAPi.Jwt.Models
                 new Claim(ClaimTypes.Role,"Visitor")
             };
 
-            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: "http://localhost", audience: "http://localhost", notBefore: DateTime.Now, expires: DateTime.Now.AddMinutes(10), signingCredentials: credentials, claims: claims);
+            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
+                issuer: "http://localhost",
+                audience: "http://localhost", 
+                notBefore: DateTime.Now, 
+                expires: DateTime.Now.AddMinutes(10), 
+                signingCredentials: credentials, 
+                claims: claims);
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
             return handler.WriteToken(jwtSecurityToken);
         }
