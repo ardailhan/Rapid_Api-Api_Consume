@@ -1,11 +1,6 @@
 ﻿using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.Concrete
 {
@@ -24,5 +19,6 @@ namespace HotelProject.DataAccessLayer.Concrete
         public DbSet<About> Abouts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Guest> Guests { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }

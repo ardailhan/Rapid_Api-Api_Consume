@@ -1,34 +1,36 @@
-﻿using HotelProject.WebUI.DTOs.SubscribeDto;
+﻿using HotelProject.WebUI.DTOs.ContactDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace HotelProject.WebUI.Controllers
 {
-    public class DefaultController : Controller
+    public class ContactController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public DefaultController(IHttpClientFactory httpClientFactory)
+        public ContactController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
+
         public IActionResult Index()
         {
             return View();
         }
         [HttpGet]
-        public PartialViewResult _SubscribePartial()
+        public PartialViewResult SendMessage()
         {
             return PartialView();
         }
         [HttpPost]
-        public async Task<IActionResult> _SubscribePartial(CreateSubscribeDto createSubscribeDto)
+        public async Task<IActionResult> SendMessage(CreateContactDto createContactDto)
         {
+            createContactDto.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createSubscribeDto);
+            var jsonData = JsonConvert.SerializeObject(createContactDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            await client.PostAsync("http://localhost:5269/api/Subscribe", stringContent);
+            await client.PostAsync("http://localhost:5269/api/Contact", stringContent);
             return RedirectToAction("Index", "Default");
         }
     }
