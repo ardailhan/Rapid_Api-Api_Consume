@@ -1,6 +1,5 @@
 ﻿using HotelProject.BusinessLayer.Abstract;
 using HotelProject.EntityLayer.Concrete;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelProject.WebApi.Controllers
@@ -16,7 +15,7 @@ namespace HotelProject.WebApi.Controllers
             _contactService = contactService;
         }
         [HttpGet]
-        public IActionResult ContactList()
+        public IActionResult InboxListContact()
         {
             var values = _contactService.TGetList();
             return Ok(values);
