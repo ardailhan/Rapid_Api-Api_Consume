@@ -1,6 +1,6 @@
-﻿@model List<InboxContactDto>
+﻿@model List<ResultSendboxDto>
 @{
-    ViewData["Title"] = "Inbox";
+    ViewData["Title"] = "Sendbox";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
@@ -16,7 +16,7 @@
         <div role="toolbar" class="toolbar">
             <div class="btn-group">
                 <button aria-expanded="false" data-toggle="dropdown" class="btn btn-dark dropdown-toggle" type="button">
-                    Inbox <span class="caret m-l-5"></span>
+                    Sentbox <span class="caret m-l-5"></span>
                 </button>
             </div>
         </div>
@@ -24,7 +24,7 @@
             @foreach (var item in Model)
             {
                 <div class="message">
-                    <a href="/AdminContact/MessageDetailsByInbox/@item.ContactID">
+                    <a href="/AdminContact/MessageDetailsBySendbox/@item.SendMessageID">
                         <div class="col-mail col-mail-1">
                             <div class="email-checkbox">
                                 <input type="checkbox" id="chk2">
@@ -32,8 +32,8 @@
                             </div><span class="star-toggle ti-star"></span>
                         </div>
                         <div class="col-mail col-mail-2">
-                            <div class="subject">@item.Message.Substring(0,60)</div>
-                            <div class="date"></div>
+                            <div class="subject"><b>Subject :@item.Title</b> Receiver: @item.ReceiverName</div>
+                            <div class="date">@(((DateTime)item.Date).ToString("dd-MMM-yyyy"))</div>
                         </div>
                     </a>
                 </div>

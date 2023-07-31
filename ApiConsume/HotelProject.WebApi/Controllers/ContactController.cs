@@ -29,26 +29,11 @@ namespace HotelProject.WebApi.Controllers
             return Ok();
         }
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteContact(int id)
-        //{
-        //    var values = _contactService.TGetByID(id);
-        //    _contactService.TDelete(values);
-        //    return Ok();
-        //}
-
-        //[HttpPut("UpdateBooking")]
-        //public IActionResult UpdateContact(Contact contact)
-        //{
-        //    _contactService.TUpdate(contact);
-        //    return Ok();
-        //}
-
-        //[HttpGet("{id}")]
-        //public IActionResult GetContact(int id)
-        //{
-        //    var values = _contactService.TGetByID(id);
-        //    return Ok(values);
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetSendMessage(int id)
+        {
+            var values = _contactService.TGetByID(id);
+            return Ok(values);
+        }
     }
 }
