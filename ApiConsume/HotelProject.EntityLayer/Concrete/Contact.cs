@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HotelProject.EntityLayer.Concrete
+﻿namespace HotelProject.EntityLayer.Concrete
 {
     public class Contact
     {
@@ -14,5 +8,8 @@ namespace HotelProject.EntityLayer.Concrete
         public string Subject { get; set; }
         public string Message { get; set; }
         public DateTime Date { get; set; }
+        public int MessageCategoryID { get; set; }
+        //Navigation Property
+        public MessageCategory MessageCategory { get; set; }
     }
 }
