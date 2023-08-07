@@ -2,11 +2,6 @@
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.DataAccessLayer.Repositories;
 using HotelProject.EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.EntityFramework
 {
@@ -21,6 +16,13 @@ namespace HotelProject.DataAccessLayer.EntityFramework
             using var context = new Context();
             var value = context.Staffs.Count();
             return value;
+        }
+
+        public List<Staff> Last4StaffList()
+        {
+            using var context = new Context();
+            var values = context.Staffs.OrderByDescending(x=>x.StaffID).Take(4).ToList();
+            return values;
         }
     }
 }
