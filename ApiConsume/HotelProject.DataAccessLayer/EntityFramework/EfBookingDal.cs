@@ -27,6 +27,7 @@ namespace HotelProject.DataAccessLayer.EntityFramework
             context.SaveChanges();
         }
 
+
         public int GetBookingCount()
         {
             var context = new Context();
@@ -39,6 +40,13 @@ namespace HotelProject.DataAccessLayer.EntityFramework
             var context = new Context();
             var values = context.Bookings.OrderByDescending(x => x.BookingID).Take(6).ToList();
             return values;
+        }
+        public void BookingStatusChangeApproved3(int id)
+        {
+            var context = new Context();
+            var values = context.Bookings.Find(id);
+            values.Status = "Approved";
+            context.SaveChanges();
         }
     }
 }
